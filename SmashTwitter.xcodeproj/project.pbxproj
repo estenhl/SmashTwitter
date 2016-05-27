@@ -10,6 +10,7 @@
 		D81372691CF6FDD0006DF0F6 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D81372681CF6FDD0006DF0F6 /* TwitterAPI.swift */; };
 		D813726B1CF701F6006DF0F6 /* Mention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813726A1CF701F6006DF0F6 /* Mention.swift */; };
 		D832C6851CF82BFB00279E6B /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D832C6841CF82BFB00279E6B /* OAuth.swift */; };
+		D832C6871CF8426500279E6B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D832C6861CF8426500279E6B /* String.swift */; };
 		D887BADC1CF72BA4006A0211 /* TwitterCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D887BADB1CF72BA4006A0211 /* TwitterCredentials.swift */; };
 		D8FB7C2A1CF5F2B1008D3390 /* SmashTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = D8FB7C291CF5F2B1008D3390 /* SmashTwitter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D8FB7C481CF5F343008D3390 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FB7C471CF5F343008D3390 /* Tweet.swift */; };
@@ -21,6 +22,7 @@
 		D81372681CF6FDD0006DF0F6 /* TwitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
 		D813726A1CF701F6006DF0F6 /* Mention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mention.swift; sourceTree = "<group>"; };
 		D832C6841CF82BFB00279E6B /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
+		D832C6861CF8426500279E6B /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D887BADB1CF72BA4006A0211 /* TwitterCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterCredentials.swift; sourceTree = "<group>"; };
 		D8FB7C261CF5F2B1008D3390 /* SmashTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SmashTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8FB7C291CF5F2B1008D3390 /* SmashTwitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmashTwitter.h; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				D813726A1CF701F6006DF0F6 /* Mention.swift */,
 				D887BADB1CF72BA4006A0211 /* TwitterCredentials.swift */,
 				D832C6841CF82BFB00279E6B /* OAuth.swift */,
+				D832C6861CF8426500279E6B /* String.swift */,
 			);
 			path = SmashTwitter;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				D813726B1CF701F6006DF0F6 /* Mention.swift in Sources */,
 				D8FB7C4A1CF5F3C0008D3390 /* User.swift in Sources */,
 				D8FB7C481CF5F343008D3390 /* Tweet.swift in Sources */,
+				D832C6871CF8426500279E6B /* String.swift in Sources */,
 				D8FB7C4C1CF5F47E008D3390 /* MediaItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
