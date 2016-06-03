@@ -10,30 +10,33 @@ public class OAuth {
     ]
     
     static func generateNonce(key: String) -> String {
-        if let value = key.toBase64() {
-            return value
-        }
-        return key
+        return "ACGABCAG"
     }
     
     static func generateTimestamp() -> String {
         let date = NSDate()
         
-        return String(date.timeIntervalSince1970)
+        return String(Int(date.timeIntervalSince1970))
     }
 }
 
 public extension OAuth {
-    static func generateSignature(parameters: [String: String], url: String, httpMethod: String) -> String {
+    static func generateSignature(parameters: [String: String], url: String, httpMethod: String) -> String? {
         let encodedParameters = encodeParameters(parameters)
         var parameterString = generateParameterString(encodedParameters)
 
         if let encodedUrl = url.toRFC3986(),
-           let encodedParameterString = parameterString.toRFC3986() {
+           let encodedParameterString = parameterString.toRFC3986(),
+           let accessTokenKey = TwitterCredentials.readCredentialsFromFile(TwitterCredentials.TwitterOAuthCredentialFiles.AccessTokenSecret),
+           let consumerKey = TwitterCredentials.readCredentialsFromFile(TwitterCredentials.TwitterOAuthCredentialFiles.ConsumerSecret ){
             parameterString = httpMethod.uppercaseString + "&" + encodedUrl + "&" + encodedParameterString
+            print(parameterString)
+            let data = parameterString.encodeWithHmacSha1(consumerKey + "&" + accessTokenKey)
+            let options = NSDataBase64EncodingOptions()
+            return data.base64EncodedStringWithOptions(options)
         }
         
-        return ""
+        return nil
     }
     
     private static func encodeParameters(parameters: [String: String]) -> [String: String] {

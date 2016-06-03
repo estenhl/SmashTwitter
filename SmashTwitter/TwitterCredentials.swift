@@ -2,23 +2,18 @@ import Foundation
 
 public class TwitterCredentials {
     struct TwitterOAuthCredentialFiles {
-        static let ConsumerKey = "~/projects/ios/consumerKey.txt"
-        static let ConsumerSecret = "~/projects/ios/consumerSecret.txt"
-        static let AccessToken = "~/projects/ios/accessToken.txt"
-        static let AccessTokenSecret = "~/projects/ios/accessTokenSecret.txt"
+        static let ConsumerKey = "consumerKey"
+        static let ConsumerSecret = "consumerSecret"
+        static let AccessToken = "accessToken"
+        static let AccessTokenSecret = "accessTokenSecret"
     }
     
     static func readCredentialsFromFile(filename: String) -> String? {
-        if filename == TwitterOAuthCredentialFiles.ConsumerKey {
-            return ""
-        } else if filename == TwitterOAuthCredentialFiles.ConsumerSecret {
-            return ""
-        } else if filename == TwitterOAuthCredentialFiles.AccessToken {
-            return ""
-        } else if filename == TwitterOAuthCredentialFiles.AccessTokenSecret {
-            return ""
-        } else {
-            return nil
+        let credentialPath = NSBundle.mainBundle().pathForResource(filename, ofType: "txt")
+        if let credentialPath = credentialPath,
+           let data = NSData(contentsOfFile: credentialPath) {
+           return String(data: data, encoding: NSUTF8StringEncoding)
         }
+        return nil
     }
 }

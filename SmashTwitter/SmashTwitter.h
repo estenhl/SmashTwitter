@@ -1,11 +1,3 @@
-//
-//  SmashTwitter.h
-//  SmashTwitter
-//
-//  Created by Esten on 25/05/16.
-//  Copyright © 2016 Esten. All rights reserved.
-//
-
 #import <UIKit/UIKit.h>
 
 //! Project version number for SmashTwitter.

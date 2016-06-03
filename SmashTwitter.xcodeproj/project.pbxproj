@@ -11,7 +11,13 @@
 		D813726B1CF701F6006DF0F6 /* Mention.swift in Sources */ = {isa = PBXBuildFile; fileRef = D813726A1CF701F6006DF0F6 /* Mention.swift */; };
 		D832C6851CF82BFB00279E6B /* OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = D832C6841CF82BFB00279E6B /* OAuth.swift */; };
 		D832C6871CF8426500279E6B /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D832C6861CF8426500279E6B /* String.swift */; };
+		D832C68C1CF86BBD00279E6B /* accessToken.txt in Resources */ = {isa = PBXBuildFile; fileRef = D832C6891CF86BBD00279E6B /* accessToken.txt */; };
+		D832C68D1CF86BBD00279E6B /* consumerSecret.txt in Resources */ = {isa = PBXBuildFile; fileRef = D832C68A1CF86BBD00279E6B /* consumerSecret.txt */; };
+		D832C68E1CF86BBD00279E6B /* consumerKey.txt in Resources */ = {isa = PBXBuildFile; fileRef = D832C68B1CF86BBD00279E6B /* consumerKey.txt */; };
+		D832C6901CF86D7700279E6B /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D832C68F1CF86D7700279E6B /* Security.framework */; };
+		D832C6921CF8720E00279E6B /* accessTokenSecret.txt in Resources */ = {isa = PBXBuildFile; fileRef = D832C6911CF8720E00279E6B /* accessTokenSecret.txt */; };
 		D887BADC1CF72BA4006A0211 /* TwitterCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = D887BADB1CF72BA4006A0211 /* TwitterCredentials.swift */; };
+		D8AB25031D006FD6006469E7 /* TwitterSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8AB25021D006FD6006469E7 /* TwitterSearchResponse.swift */; };
 		D8FB7C2A1CF5F2B1008D3390 /* SmashTwitter.h in Headers */ = {isa = PBXBuildFile; fileRef = D8FB7C291CF5F2B1008D3390 /* SmashTwitter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D8FB7C481CF5F343008D3390 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FB7C471CF5F343008D3390 /* Tweet.swift */; };
 		D8FB7C4A1CF5F3C0008D3390 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8FB7C491CF5F3C0008D3390 /* User.swift */; };
@@ -23,7 +29,13 @@
 		D813726A1CF701F6006DF0F6 /* Mention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mention.swift; sourceTree = "<group>"; };
 		D832C6841CF82BFB00279E6B /* OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuth.swift; sourceTree = "<group>"; };
 		D832C6861CF8426500279E6B /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		D832C6891CF86BBD00279E6B /* accessToken.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = accessToken.txt; sourceTree = "<group>"; };
+		D832C68A1CF86BBD00279E6B /* consumerSecret.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = consumerSecret.txt; sourceTree = "<group>"; };
+		D832C68B1CF86BBD00279E6B /* consumerKey.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = consumerKey.txt; sourceTree = "<group>"; };
+		D832C68F1CF86D7700279E6B /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D832C6911CF8720E00279E6B /* accessTokenSecret.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = accessTokenSecret.txt; sourceTree = "<group>"; };
 		D887BADB1CF72BA4006A0211 /* TwitterCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterCredentials.swift; sourceTree = "<group>"; };
+		D8AB25021D006FD6006469E7 /* TwitterSearchResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterSearchResponse.swift; sourceTree = "<group>"; };
 		D8FB7C261CF5F2B1008D3390 /* SmashTwitter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SmashTwitter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8FB7C291CF5F2B1008D3390 /* SmashTwitter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SmashTwitter.h; sourceTree = "<group>"; };
 		D8FB7C2B1CF5F2B1008D3390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,15 +49,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D832C6901CF86D7700279E6B /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D832C6881CF86BAF00279E6B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D832C6891CF86BBD00279E6B /* accessToken.txt */,
+				D832C68A1CF86BBD00279E6B /* consumerSecret.txt */,
+				D832C68B1CF86BBD00279E6B /* consumerKey.txt */,
+				D832C6911CF8720E00279E6B /* accessTokenSecret.txt */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		D8FB7C1C1CF5F2B1008D3390 = {
 			isa = PBXGroup;
 			children = (
+				D832C68F1CF86D7700279E6B /* Security.framework */,
 				D8FB7C281CF5F2B1008D3390 /* SmashTwitter */,
 				D8FB7C271CF5F2B1008D3390 /* Products */,
 			);
@@ -62,9 +87,11 @@
 		D8FB7C281CF5F2B1008D3390 /* SmashTwitter */ = {
 			isa = PBXGroup;
 			children = (
+				D832C6881CF86BAF00279E6B /* Resources */,
 				D8FB7C291CF5F2B1008D3390 /* SmashTwitter.h */,
 				D8FB7C2B1CF5F2B1008D3390 /* Info.plist */,
 				D8FB7C471CF5F343008D3390 /* Tweet.swift */,
+				D8AB25021D006FD6006469E7 /* TwitterSearchResponse.swift */,
 				D8FB7C491CF5F3C0008D3390 /* User.swift */,
 				D8FB7C4B1CF5F47E008D3390 /* MediaItem.swift */,
 				D81372681CF6FDD0006DF0F6 /* TwitterAPI.swift */,
@@ -144,6 +171,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D832C6921CF8720E00279E6B /* accessTokenSecret.txt in Resources */,
+				D832C68D1CF86BBD00279E6B /* consumerSecret.txt in Resources */,
+				D832C68E1CF86BBD00279E6B /* consumerKey.txt in Resources */,
+				D832C68C1CF86BBD00279E6B /* accessToken.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,6 +193,7 @@
 				D8FB7C481CF5F343008D3390 /* Tweet.swift in Sources */,
 				D832C6871CF8426500279E6B /* String.swift in Sources */,
 				D8FB7C4C1CF5F47E008D3390 /* MediaItem.swift in Sources */,
+				D8AB25031D006FD6006469E7 /* TwitterSearchResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +294,7 @@
 		D8FB7C2F1CF5F2B1008D3390 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -273,6 +306,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.snapsale.SmashTwitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "~/projects/ios/SmashTwitter";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -280,6 +315,7 @@
 		D8FB7C301CF5F2B1008D3390 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -291,6 +327,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.snapsale.SmashTwitter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_INCLUDE_PATHS = "~/projects/ios/SmashTwitter";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

@@ -12,15 +12,11 @@ public extension TwitterAPI {
     public static func searchForTweets(searchString: String, withCount count: Int, andAdditionalParameters parameters: [String: String], fromMinId minId: String? = nil, handler: [Tweet] -> Void) {
         dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)) {
             if let endpoint = endpoints["search"] {
-                let queryString = createQueryString(searchString, count: count, parameters: parameters, minId: minId)
-                let path = twitterURL + endpoint + "?" + queryString
-                let url = NSURL(string: path)
+                let path = twitterURL + endpoint + "?" + createQueryString(searchString, count: count, parameters: parameters)
                 
-                if let url = url {
+                if let url = NSURL(string: path),
+                   OAuthHeader = generateOAuthHeader(searchString, count: count, parameters: parameters, url: twitterURL + endpoint, httpMethod: "GET") {
                     let request = NSMutableURLRequest(URL: url)
-                    let OAuthHeader = generateOAuthHeader(searchString, count: count, parameters: parameters, url: path, httpMethod: "GET")
-                    print("Path: \(path)")
-                    print("OAuthHeader: \(OAuthHeader)")
                     request.setValue(OAuthHeader, forHTTPHeaderField: "Authorization")
                     request.HTTPMethod = "GET"
                     
@@ -45,7 +41,7 @@ public extension TwitterAPI {
         return queryString
     }
     
-    private static func generateOAuthHeader(searchString: String, count: Int, parameters: [String: String], url: String, httpMethod: String, minId: String? = nil) -> String {
+    private static func generateOAuthHeader(searchString: String, count: Int, parameters: [String: String], url: String, httpMethod: String, minId: String? = nil) -> String? {
         var OAuthParameters = [String: String]()
         OAuthParameters["oauth_consumer_key"] = TwitterCredentials.readCredentialsFromFile(TwitterCredentials.TwitterOAuthCredentialFiles.ConsumerKey)
         OAuthParameters["oauth_nonce"] = OAuth.generateNonce(searchString)
@@ -55,15 +51,20 @@ public extension TwitterAPI {
         OAuthParameters["oauth_signature_method"] = OAuth.SignatureMethods["Twitter"]
         OAuthParameters["q"] = searchString
         OAuthParameters["count"] = String(count)
+        
         if minId != nil {
             OAuthParameters["since_id"] = minId
         }
+        
         for (key, value) in parameters {
             OAuthParameters[key] = value
         }
-        let OAuthSignature = OAuth.generateSignature(parameters, url: url, httpMethod: httpMethod)
         
-        return OAuth.createHeaderFromParameters(OAuthParameters, withSignature: OAuthSignature)
+        if let OAuthSignature = OAuth.generateSignature(OAuthParameters, url: url, httpMethod: httpMethod)?.toRFC3986() {
+            return OAuth.createHeaderFromParameters(OAuthParameters, withSignature: OAuthSignature)
+        }
+        
+        return nil
     }
     
     private static func executeRequest(request: NSMutableURLRequest, handler: (NSData?, NSURLResponse?, NSError?, [Tweet] -> Void) -> Void, tweetHandler: [Tweet] -> Void) {
@@ -74,18 +75,18 @@ public extension TwitterAPI {
     private static func handleTwitterSearchResponse(data: NSData?, response: NSURLResponse?, error: NSError?, handler: [Tweet] -> Void) {
         if let httpResponse = response as? NSHTTPURLResponse {
             if let data = data where httpResponse.statusCode == 200 {
-                handler(parseTwitterSearchResponse(String(data: data, encoding: NSUTF8StringEncoding)))
+                handler(parseTwitterSearchResponse(data))
             } else {
                 print("Http response code: \(httpResponse.statusCode)")
                 print("Response: \(httpResponse.debugDescription)")
+                print("Data: \(String(data: data!, encoding: NSUTF8StringEncoding))")
             }
         }
     }
     
-    private static func parseTwitterSearchResponse(response: String?) -> [Tweet] {
-        if let response = response {
-            print(response)
-        }
-        return [Tweet]()
+    private static func parseTwitterSearchResponse(response: NSData) -> [Tweet] {
+        print(String(data: response, encoding: NSUTF8StringEncoding))
+        let searchresponse = TwitterSearchResponse(twitterSearchResponse: response)
+        return searchresponse.tweets
     }
 }
