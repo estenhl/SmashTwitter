@@ -58,12 +58,12 @@ public extension Tweet {
     
     public static func tweetFromJson(obj: [String: AnyObject]) -> Tweet? {
         guard let text = obj[JsonFields.Text] as? String,
-            let created = obj[JsonFields.Created] as? String,
-            let id = obj[JsonFields.Id] as? String,
-            let userObj = obj[JsonFields.User] as? [String: AnyObject],
-            let screenName = userObj[JsonFields.UserFields.ScreenName] as? String,
-            let name = userObj[JsonFields.UserFields.Name] as? String,
-            let userId = userObj[JsonFields.UserFields.Id] as? String
+              let created = obj[JsonFields.Created] as? String,
+              let id = obj[JsonFields.Id] as? String,
+              let userObj = obj[JsonFields.User] as? [String: AnyObject],
+              let screenName = userObj[JsonFields.UserFields.ScreenName] as? String,
+              let name = userObj[JsonFields.UserFields.Name] as? String,
+              let userId = userObj[JsonFields.UserFields.Id] as? String
         else {
             print("Invalid tweet")
             return nil
@@ -76,8 +76,8 @@ public extension Tweet {
         formatter.dateFormat = "EEE MMM dd HH:mm:ss         XXXXX yyyy"
         guard let date = formatter.dateFromString(created)
         else {
-                print("Invalid date format")
-                return nil
+            print("Invalid date format")
+            return nil
         }
 
         

@@ -85,7 +85,6 @@ public extension TwitterAPI {
     }
     
     private static func parseTwitterSearchResponse(response: NSData) -> [Tweet] {
-        print(String(data: response, encoding: NSUTF8StringEncoding))
         let searchresponse = TwitterSearchResponse(twitterSearchResponse: response)
         return searchresponse.tweets
     }
